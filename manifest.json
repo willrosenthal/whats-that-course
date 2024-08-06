@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "What's That Course?",
+  "version": "1.0",
+  "description": "Search for Cornell University courses by their course codes.",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "scripting",
+    "commands",
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "128": "images/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["popup.html", "popup.js", "images/logo.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F"
+      },
+      "description": "Open What's That Course?"
+    }
+  }
+}

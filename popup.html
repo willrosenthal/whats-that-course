@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What's That Course?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 1px;
+      padding: 0;
+      width: 400px; /* Adjusted to add space for the menu button */
+      height: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+      display: flex;
+      position: relative;
+    }
+    .sidebar {
+      width: 40px;
+      background-color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: 1px solid #ccc;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .content {
+      padding: 20px;
+      width: calc(100% - 50px); /* Adjust width to account for sidebar */
+      flex-grow: 1;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+    #subtitle {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      width: calc(100% - 90px);
+      padding: 8px;
+      font-size: 14px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 8px 12px;
+      font-size: 14px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+    }
+    button#resetButton {
+    background-color: transparent;
+    border: 1px solid #787878;
+    color: #787878; 
+    padding: 6px 10px;
+    font-size: 12px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: none; /* Hide initially */
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    button#resetButton:hover {
+      background-color: rgba(120, 120, 120, 0.1); /* Slight background color on hover */
+      border-color: #787878;
+    }
+    .view-button {
+      padding: 12px 24px; /* Increase padding */
+      font-size: 16px; /* Increase font size */
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px; /* Add spacing above the button */
+    }
+    .view-button:hover {
+      background-color: #45a049;
+    }
+    #courseName {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    #logo {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+    }
+    .footer-text {
+      font-size: 10px;
+      color: #999;
+      text-align: center;
+      margin-top: 20px;
+    }
+    #menuButton {
+      cursor: pointer;
+      font-size: 24px;
+      border: none;
+      background: none;
+    }
+    #sideMenu {
+      position: fixed;
+      top: 0;
+      left: -300px; /* Initially hide the menu off-screen */
+      width: 300px;
+      height: 100%;
+      background-color: #f1f1f1;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      border: none;
+      transition: left 0.8s ease-out; /* Add transition for sliding effect */
+    }
+    #sideMenu.open {
+      left: 0;
+      width: 100%;
+    }
+    #sideMenu .closebtn {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      font-size: 36px;
+      cursor: pointer;
+    }
+    #sideMenu .settings-section {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #sideMenu button 
+    {
+      
+      max-width: 150px !important;
+      width: 150%;
+      padding: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      margin-top: 10px;
+      white-space: nowrap;
+      text-align: center;
+    }
+    #sideMenu button:hover {
+      background-color: #45a049;
+    }
+    #sideMenu button:disabled {
+      background-color: #111111;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <span id="menuButton">&#9776;</span>
+  </div>
+  <div id="sideMenu" class="sidemenu">
+    <span class="closebtn" id="closeMenuButton">&times;</span>
+    <div class="settings-section">
+      <button id="openHotkeySettings">Set Shortcut</button>
+      <button id="detectCoursesButton">Detect Courses</button>
+    </div>
+  </div>
+  <div class="content">
+    <h1>What's That Course?</h1>
+    <div id="subtitle">Made for Cornell University</div>
+    <div style="display: flex; align-items: center;">
+      <input type="text" id="courseCode" placeholder="Enter course code (e.g., CS 2110)">
+      <button id="searchButton">Search</button>
+    </div>
+    <div id="courseName"></div>
+    <img id="logo" src="images/logo.png" alt="Cornell University Logo">
+    <button id="resetButton">Clear</button>
+    <div class="footer-text">Developed by Will Rosenthal</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
